@@ -25,7 +25,20 @@
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
+}
 
+@media screen and (max-width: 2000px) {
+  .main {
+    max-width: 80vw;
+
+
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .main {
+    max-width: 80vw;
+  }
 }
 
 
