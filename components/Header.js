@@ -32,7 +32,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/router";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import logo from "/public/images/logo.svg";
+import logo from "/images/logo.svg";
 
 
 
