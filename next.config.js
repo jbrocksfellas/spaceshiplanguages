@@ -7,6 +7,7 @@ module.exports = {
     localeDetection: false,
   },
   images: {
-    domains: ["spaceshipblog.local", "zenlabs.ch"]
+    domains: ["localhost", "spaceshipblog.local", "zenlabs.ch"],
+    // path: "/",
   }
 };

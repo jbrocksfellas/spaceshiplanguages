@@ -46,14 +46,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1400px;
+    max-width: 100vw;
     margin: 0 auto;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
 .background {
-    background: #fad237 url(../public/yellowbg.jpg) center top no-repeat;
+    background: #fad237 url(../public/images/yellowbg.jpg) center top no-repeat;
     position: absolute;
     top: 0;
     width: 100%;

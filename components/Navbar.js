@@ -30,7 +30,7 @@ query newQuery($uri: String!) {
 export default function Navbar(props) {
   const routeProps = useRouter();
   const { locale: activeLocale, locales, asPath } = routeProps
-  console.log("locales", locales, activeLocale)
+  // console.log("locales", locales, activeLocale)
   const [currentPostAvailLanguages, setCurrentPostAvailLanguages] = useState(locales)
 
   const { query } = getApolloClient();
@@ -42,14 +42,14 @@ export default function Navbar(props) {
       }
 
     })
-    console.log("data", data)
+    // console.log("data", data)
     if (data?.nodeByUri?.translations) {
       const languages = data?.nodeByUri?.translations.map((item) => item.language.slug).sort()
-      console.log("languages", languages)
+      // console.log("languages", languages)
       setCurrentPostAvailLanguages(languages)
     } else {
       const availLocals = locales.filter((item) => item !== activeLocale).sort()
-      console.log("availLocals", availLocals, activeLocale)
+      // console.log("availLocals", availLocals, activeLocale)
       setCurrentPostAvailLanguages(availLocals)
     }
 

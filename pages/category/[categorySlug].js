@@ -10,10 +10,9 @@ import categoryStyles from './category.module.css'
 const LENGTH = 100;
 
 export default function Category({ posts, slug, categorySeo, ...props }) {
-    console.log("categorySeo", categorySeo)
+
     const postExcerptShorten = (excerpt) => {
         const newExcerpt = excerpt ? `${excerpt.substring(0, LENGTH)} [...]</p>` : excerpt
-        // console.log("newExcerpt", newExcerpt)
         return newExcerpt
     }
     const title = slug.replace(/-/g, " ")
@@ -69,7 +68,7 @@ export default function Category({ posts, slug, categorySeo, ...props }) {
 
 export async function getStaticProps({ params, locale, ...props }) {
     const { categorySlug, postSlug } = params;
-    console.log("params", props, locale, params)
+
     const language = locale.toUpperCase();
 
     const apolloClient = getApolloClient();
@@ -88,10 +87,11 @@ export async function getStaticProps({ params, locale, ...props }) {
             categorySlug
         }
     })
-    const databaseId = databaseIdQuery?.data.categories.nodes[0].databaseId;
-    console.log("databaseIdQuery", databaseId)
 
-    const categoryTranslationsData = await apolloClient.query({
+    const databaseId = databaseIdQuery?.data.categories.nodes[0]?.databaseId;
+
+
+    const categoryTranslationsData = databaseId ? await apolloClient.query({
         query: gql`
         query getTranslationsForCategory($id: ID!, $language: LanguageCodeEnum!) 
             {
@@ -125,15 +125,10 @@ export async function getStaticProps({ params, locale, ...props }) {
             id: databaseId,
             language,
         },
-    });
-    const categoryTranslations = categoryTranslationsData?.data.category
-    console.log("categoryTranslations", categoryTranslations)
+    }) : null;
+    const categoryTranslations = categoryTranslationsData?.data?.category ? categoryTranslationsData?.data?.category : {}
+    let posts = categoryTranslations?.translation?.posts?.nodes
 
-
-
-    // let posts = data?.data.categories.edges[0].node.posts.nodes;
-    let posts = categoryTranslations.translation.posts.nodes
-    console.log("posts", posts)
     const site = {
         ...categoryTranslationsData?.data.generalSettings,
     };
@@ -158,10 +153,10 @@ export async function getStaticProps({ params, locale, ...props }) {
         props: {
             posts,
             language,
-            path: `/${categoryTranslations.translation.slug}`,
+            path: `/${categoryTranslations?.translation?.slug}`,
             site,
-            slug: categoryTranslations.translation.slug,
-            categorySeo: categoryTranslations.seo
+            slug: categoryTranslations?.translation?.slug,
+            categorySeo: categoryTranslations?.seo
         },
         revalidate: 10,
     };
@@ -199,7 +194,6 @@ export async function getStaticPaths({ locales, defaultLocale, ...props }) {
         };
     });
 
-    console.log("getStaticPaths props", props)
     return {
         paths: [
             ...paths,

@@ -26,33 +26,19 @@ import {
     Typography,
 } from "@mui/material";
 
-
-
-
 import Image from "next/image";
 import Link from "next/link";
 // import { usePathname, useRouter } from "next/navigation";
 import { useRouter, usePathname } from "next/router";
 import { useEffect, useState } from "react";
-
-
-import AvtImage from "../public/laura1.jpg";
-import logo from "../public/logo.svg";
 import Navbar from "./Navbar";
-
-// import Switcher from "./Language/Switcher";
-
+import logo from "/public/images/logo.svg";
 
 
-//social login logout url from frontend
-//https://spaceshiplanguages-beta.vercel.app/
-//const GOOGLE_LOGOUT_URL = 'https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000/';
-const GOOGLE_LOGOUT_URL =
-    "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://spaceshiplanguages-beta.vercel.app/";
-const FACEBOOK_LOGOUT_URL = `https://www.facebook.com/logout.php?next=YOUR_APP_URL&access_token=ACCESS_TOKEN`;
-const TWITTER_LOGOUT_URL = `https://twitter.com/logout?return_to=YOUR_APP_URL`;
 
 const Header = () => {
+
+
     const router = useRouter();
     const { currentPath } = router
     const [anchorEl, setAnchorEl] = useState(null);
@@ -85,20 +71,6 @@ const Header = () => {
         //window.location.href = "/dashboard";
         setAnchorEl(null);
     };
-
-
-
-    // const navlinks = [
-    //     {
-    //         link_label: t("student.header.Find an Instructor"),
-    //         href: "/find-an-instructor",
-    //     },
-    //     {
-    //         link_label: t("student.header.Become an Instructor"),
-    //         href: "/become-an-instructor",
-    //     },
-    //     { link_label: t("student.header.Our Story"), href: "" },
-    // ];
 
 
 
@@ -150,7 +122,8 @@ const Header = () => {
                     <Grid item xs={5} sm={3} md={2}>
                         <Box sx={logowidth}>
                             <Link href="/">
-                                <Image src={logo} alt="Logo" />
+                                {/* <Image src="/images/logo.svg" alt="Logo" width="250px" height="74px" /> */}
+                                <Image src={logo} />
                             </Link>
                         </Box>
                     </Grid>

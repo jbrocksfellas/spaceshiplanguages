@@ -11,7 +11,7 @@
 }
 
 .background {
-    background: #fad237 url(../../public/yellowbg.jpg) center top no-repeat;
+    background: #fad237 url("../../public/images/yellowbg.jpg") center top no-repeat;
     position: absolute;
     top: 0;
     width: 100%;

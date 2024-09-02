@@ -1,5 +1,5 @@
 {
-  "name": "polylang-nextjs",
+  "name": "spaceshipblog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
     "@mui/material": "^5.16.7",
     "@mui/material-nextjs": "^5.16.6",
     "@next/font": "^14.2.5",
+    "@next/third-parties": "^14.2.7",
     "@nextui-org/react": "^2.4.6",
     "framer-motion": "^11.3.28",
     "graphql": "^16.5.0",

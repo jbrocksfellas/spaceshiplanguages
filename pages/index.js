@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import { gql } from "@apollo/client";
-import defaultImage from "../public/laura1.jpg";
 import Image from "next/image";
 import { getApolloClient } from "../lib/apollo-client";
 import categoryStyles from '../styles/index.module.css'
@@ -9,7 +8,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home({ categories, page }) {
   const { title, description } = page;
-  console.log("categories:", categories);
+  // console.log("categories:", categories);
   const Categories = () => <ul className={styles.categories}>{(categories || []).map(({ node: item }) => {
     return (
       <li key={`/category/${item.slug}`}
@@ -61,7 +60,7 @@ export default function Home({ categories, page }) {
                                 {post.featuredImage?.node?.sourceUrl &&
                                   <div>
                                     <Image
-                                      src={post.featuredImage?.node?.sourceUrl ?? defaultImage}
+                                      src={post.featuredImage?.node?.sourceUrl ?? "/images/laura1.jpg"}
                                       // fill
                                       // layout='fill'
                                       width={1200}
@@ -99,7 +98,7 @@ export default function Home({ categories, page }) {
 
 export async function getStaticProps({ locale }) {
   const apolloClient = getApolloClient();
-
+  // console.log("process", process.env)
   const language = locale.toUpperCase();
 
   const getPostsForEachCategory = await apolloClient.query({
@@ -137,7 +136,7 @@ export async function getStaticProps({ locale }) {
     },
   })
 
-  console.log("data?.data.", getPostsForEachCategory?.data)
+
   const categories = getPostsForEachCategory?.data.categories.edges
   // let posts = data?.data.posts.edges
   // const posts = getPostsForEachCategory?.data.categories.nodes

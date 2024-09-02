@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 import styles from "../styles/Home.module.css";
 
 export default function Post({ post, site, language, ...props }) {
-  console.log("post", post)
+  // console.log("post", post)
   const fullHead = post?.seo?.fullHead ? parse(post?.seo?.fullHead) : null;
   return (
     <div className={styles.container}>
@@ -36,9 +36,7 @@ export default function Post({ post, site, language, ...props }) {
 
 export async function getStaticProps({ params, locale, ...props }) {
   const { postSlug } = params;
-  console.log("getStaticProps params", params, locale, props)
   const language = locale.toUpperCase();
-
   const apolloClient = getApolloClient();
 
   const data = await apolloClient.query({
@@ -99,15 +97,10 @@ export async function getStaticProps({ params, locale, ...props }) {
     };
   }
 
-  // console.log("data?.data", data?.data.postBy)
-
 
 
 
   return {
-    // redirect: {
-    //   destination: `/${post.translation.slug}`
-    // },
     props: {
       post,
       language,
@@ -149,26 +142,8 @@ export async function getStaticPaths({ locales, defaultLocale, ...props }) {
     };
   });
 
-  // console.log("flatmap", paths.flatMap((path) => {
-  //   return locales.map((locale) => {
-  //     return {
-  //       ...path,
-  //       locale,
-  //     };
-  //   });
-  // }))
+
   return {
-    // paths: [
-    //   ...paths,
-    //   // ...paths.flatMap((path) => {
-    //   //   return locales.map((locale) => {
-    //   //     return {
-    //   //       ...path,
-    //   //       locale,
-    //   //     };
-    //   //   });
-    //   // }),
-    // ],
     paths: [],
     fallback: "blocking",
   };
