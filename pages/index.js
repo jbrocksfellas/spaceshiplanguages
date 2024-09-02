@@ -8,7 +8,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home({ categories, page }) {
   const { title, description } = page;
-  // console.log("categories:", categories);
+  console.log("categories:", categories);
   const Categories = () => <ul className={styles.categories}>{(categories || []).map(({ node: item }) => {
     return (
       <li key={`/category/${item.slug}`}

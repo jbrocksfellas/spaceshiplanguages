@@ -1,5 +1,6 @@
 module.exports = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  crossOrigin: 'anonymous',
   basePath: '/blog',
   i18n: {
     locales: ["en", "fr", "de", "es"],

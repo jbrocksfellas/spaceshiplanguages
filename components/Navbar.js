@@ -42,7 +42,7 @@ export default function Navbar(props) {
       }
 
     })
-    // console.log("data", data)
+    console.log("data", data)
     if (data?.nodeByUri?.translations) {
       const languages = data?.nodeByUri?.translations.map((item) => item.language.slug).sort()
       // console.log("languages", languages)
