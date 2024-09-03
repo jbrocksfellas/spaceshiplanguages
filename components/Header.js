@@ -122,7 +122,7 @@ const Header = () => {
                     <Grid item xs={5} sm={3} md={2}>
                         <Box sx={logowidth}>
                             <Link href="/">
-                                <Image src={"/blog/images/logo.svg"} alt="Logo" width="250px" height="74px" />
+                                <Image src={"/images/logo.svg"} alt="Logo" width="250px" height="74px" />
                                 {/* <Image src={logo} /> */}
                             </Link>
                         </Box>
