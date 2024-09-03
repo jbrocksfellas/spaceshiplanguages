@@ -32,7 +32,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/router";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import logo from "/images/logo.svg";
+// import logo from "/images/logo.svg";
 
 
 
@@ -122,8 +122,8 @@ const Header = () => {
                     <Grid item xs={5} sm={3} md={2}>
                         <Box sx={logowidth}>
                             <Link href="/">
-                                {/* <Image src="/images/logo.svg" alt="Logo" width="250px" height="74px" /> */}
-                                <Image src={logo} />
+                                <Image src={"/blog/images/logo.svg"} alt="Logo" width="250px" height="74px" />
+                                {/* <Image src={logo} /> */}
                             </Link>
                         </Box>
                     </Grid>
