@@ -1,7 +1,7 @@
 module.exports = {
   // reactStrictMode: true,
   crossOrigin: 'anonymous',
-  basePath: '/blog',
+  // basePath: '/blog',
   i18n: {
     locales: ["en", "fr", "de", "es"],
     defaultLocale: "en",
@@ -9,6 +9,5 @@ module.exports = {
   },
   images: {
     domains: ["localhost", "spaceshipblog.local", "zenlabs.ch"],
-    // path: "/",
   }
 };
