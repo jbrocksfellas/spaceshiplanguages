@@ -23,9 +23,9 @@ export default function Category({ posts, slug, categorySeo, ...props }) {
             <Head>
                 {fullHead}
             </Head>
+            <div className={categoryStyles.background} />
+            <main className={styles.main}>
 
-            <main className={categoryStyles.main}>
-                <div className={categoryStyles.background} />
                 <h1 className={styles.title}>{title.charAt(0).toUpperCase()
                     + title.slice(1)}</h1>
                 <div className={categoryStyles.container}>
@@ -67,8 +67,7 @@ export default function Category({ posts, slug, categorySeo, ...props }) {
 
 
 export async function getStaticProps({ params, locale, ...props }) {
-    const { categorySlug, postSlug } = params;
-
+    const { categorySlug } = params;
     const language = locale.toUpperCase();
 
     const apolloClient = getApolloClient();
@@ -86,12 +85,17 @@ export async function getStaticProps({ params, locale, ...props }) {
         variables: {
             categorySlug
         }
-    })
+    });
 
-    const databaseId = databaseIdQuery?.data.categories.nodes[0]?.databaseId;
+    const databaseId = databaseIdQuery?.data?.categories?.nodes[0]?.databaseId;
 
+    if (!databaseId) {
+        return {
+            notFound: true,
+        };
+    }
 
-    const categoryTranslationsData = databaseId ? await apolloClient.query({
+    const categoryTranslationsData = await apolloClient.query({
         query: gql`
         query getTranslationsForCategory($id: ID!, $language: LanguageCodeEnum!) 
             {
@@ -125,27 +129,17 @@ export async function getStaticProps({ params, locale, ...props }) {
             id: databaseId,
             language,
         },
-    }) : null;
-    const categoryTranslations = categoryTranslationsData?.data?.category ? categoryTranslationsData?.data?.category : {}
-    let posts = categoryTranslations?.translation?.posts?.nodes
+    });
 
-    const site = {
-        ...categoryTranslationsData?.data.generalSettings,
-    };
+    const categoryTranslations = categoryTranslationsData?.data?.category || {};
+    const posts = categoryTranslations?.translation?.posts?.nodes || [];
+    const site = categoryTranslationsData?.data?.generalSettings || {};
 
     if (categoryTranslations?.language?.code && language !== categoryTranslations.language.code) {
         return {
             redirect: {
                 destination: `/category/${categoryTranslations.translation.slug}`
             },
-            props: {
-                posts,
-                language,
-                path: `/${categoryTranslations.translation.slug}`,
-                site,
-                slug: categoryTranslations.translation.slug
-            },
-            revalidate: 10,
         };
     }
 
@@ -153,10 +147,10 @@ export async function getStaticProps({ params, locale, ...props }) {
         props: {
             posts,
             language,
-            path: `/${categoryTranslations?.translation?.slug}`,
+            path: `/${categoryTranslations?.translation?.slug || ''}`,
             site,
-            slug: categoryTranslations?.translation?.slug,
-            categorySeo: categoryTranslations?.seo
+            slug: categoryTranslations?.translation?.slug || '',
+            categorySeo: categoryTranslations?.seo || null
         },
         revalidate: 10,
     };

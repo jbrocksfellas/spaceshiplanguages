@@ -6,7 +6,6 @@
 .container {
   height: 100%;
   margin-top: 5.7rem;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +21,7 @@
   justify-content: center;
   align-items: center;
   max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -30,8 +30,6 @@
 @media screen and (max-width: 2000px) {
   .main {
     max-width: 80vw;
-
-
   }
 }
 
