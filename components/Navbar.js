@@ -2,12 +2,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../components/Navbar.module.css"
 import { getApolloClient } from "../lib/apollo-client";
-import { gql, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import { useEffect, useState } from "react"
-import Header from './Header'
+
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 const GetPostLanguages = gql`
 query newQuery($uri: String!) {
@@ -27,6 +27,7 @@ query newQuery($uri: String!) {
     }
   }
 }`
+
 export default function Navbar(props) {
   const routeProps = useRouter();
   const { locale: activeLocale, locales, asPath } = routeProps
