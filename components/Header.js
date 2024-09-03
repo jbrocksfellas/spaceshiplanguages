@@ -1,13 +1,7 @@
 import { styles } from "./Styles";
-
-
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-
-
 import MenuIcon from "@mui/icons-material/Menu";
-
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Divider from "@mui/material/Divider"
@@ -18,17 +12,16 @@ import Tooltip from "@mui/material/Tooltip"
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import Link from "next/link";
-// import { usePathname, useRouter } from "next/navigation";
-import { useRouter, usePathname } from "next/router";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import {
+    // useEffect, 
+    useState
+} from "react";
 import Navbar from "./Navbar";
 // import logo from "/images/logo.svg";
 
 
-
 const Header = () => {
-
-
     const router = useRouter();
     const { currentPath } = router
     const [anchorEl, setAnchorEl] = useState(null);
@@ -62,45 +55,41 @@ const Header = () => {
         setAnchorEl(null);
     };
 
+    // useEffect(() => {
+    //     const loginStatus = localStorage.getItem("loginstatus");
+    //     const userName = localStorage.getItem("userName");
+    //     const userRole = localStorage.getItem("primaryRole");
+    //     const additionaluserRole = localStorage.getItem("secondary-role");
+    //     const currentRole = localStorage.getItem("current-role");
+    //     const refreshToken = localStorage.getItem("userRefreshToken");
+    //     const profileImage = localStorage.getItem("Profile_Img");
+    //     const profilecompletestudent = localStorage.getItem("iscompleteStudent");
+    //     const profilecompleteteacher = localStorage.getItem("iscompleteTeacher");
+    //     setSocialprovider(
+    //         localStorage.getItem("setProvider") !== null &&
+    //             localStorage.getItem("setProvider") !== "undefined"
+    //             ? localStorage.getItem("setProvider")
+    //             : null
+    //     );
 
-
-
-
-    useEffect(() => {
-        const loginStatus = localStorage.getItem("loginstatus");
-        const userName = localStorage.getItem("userName");
-        const userRole = localStorage.getItem("primaryRole");
-        const additionaluserRole = localStorage.getItem("secondary-role");
-        const currentRole = localStorage.getItem("current-role");
-        const refreshToken = localStorage.getItem("userRefreshToken");
-        const profileImage = localStorage.getItem("Profile_Img");
-        const profilecompletestudent = localStorage.getItem("iscompleteStudent");
-        const profilecompleteteacher = localStorage.getItem("iscompleteTeacher");
-        setSocialprovider(
-            localStorage.getItem("setProvider") !== null &&
-                localStorage.getItem("setProvider") !== "undefined"
-                ? localStorage.getItem("setProvider")
-                : null
-        );
-
-        if (loginStatus == "true") {
-            // If it's true, update the login state
-            setLoggedin(true);
-            setName(userName ? userName : "");
-            setPrimaryRole(userRole ? userRole : "");
-            setSecondaryRole(additionaluserRole ? additionaluserRole : "");
-            setCurrentRole(currentRole ? currentRole : "");
-            setRefreshT(refreshToken ? refreshToken : "");
-            setProfileImg(profileImage ? profileImage : "");
-            setIscompleteStudent(
-                profilecompletestudent ? profilecompletestudent : "false"
-            );
-            setIscompleteTeacher(
-                profilecompleteteacher ? profilecompleteteacher : "false"
-            );
-        }
-        // console.log(profileImage,"profile image")
-    });
+    //     if (loginStatus == "true") {
+    //         // If it's true, update the login state
+    //         setLoggedin(true);
+    //         setName(userName ? userName : "");
+    //         setPrimaryRole(userRole ? userRole : "");
+    //         setSecondaryRole(additionaluserRole ? additionaluserRole : "");
+    //         setCurrentRole(currentRole ? currentRole : "");
+    //         setRefreshT(refreshToken ? refreshToken : "");
+    //         setProfileImg(profileImage ? profileImage : "");
+    //         setIscompleteStudent(
+    //             profilecompletestudent ? profilecompletestudent : "false"
+    //         );
+    //         setIscompleteTeacher(
+    //             profilecompleteteacher ? profilecompleteteacher : "false"
+    //         );
+    //     }
+    //     // console.log(profileImage,"profile image")
+    // });
 
 
 
