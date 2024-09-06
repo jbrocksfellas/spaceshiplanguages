@@ -13,10 +13,7 @@ import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-    // useEffect, 
-    useState
-} from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 // import logo from "/images/logo.svg";
 
