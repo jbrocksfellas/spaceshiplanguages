@@ -84,9 +84,9 @@ export async function getStaticProps({ params, locale, ...props }) {
   let post = data?.data.postBy;
   if (post?.language?.slug && locale !== post.language.slug) {
     return {
-      redirect: {
-        destination: `/${post.translation.slug}`
-      },
+      // redirect: {
+      //   destination: `/${post.translation.slug}`
+      // },
       props: {
         post,
         language,
