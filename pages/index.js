@@ -1,14 +1,13 @@
-import Head from "next/head";
-import Link from "next/link";
 import { gql } from "@apollo/client";
+import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { getApolloClient } from "../lib/apollo-client";
-import categoryStyles from '../styles/index.module.css'
 import styles from "../styles/Home.module.css";
+import categoryStyles from '../styles/index.module.css';
 
 export default function Home({ categories, page }) {
   const { title, description } = page;
-  console.log("categories:", categories);
   const Categories = () => <ul className={styles.categories}>{(categories || []).map(({ node: item }) => {
     return (
       <li key={`/category/${item.slug}`}

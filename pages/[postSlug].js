@@ -1,8 +1,8 @@
+import { gql } from "@apollo/client";
+import parse from "html-react-parser";
 import Head from "next/head";
 import Link from "next/link";
-import { gql } from "@apollo/client";
 import { getApolloClient } from "../lib/apollo-client";
-import parse from "html-react-parser";
 
 import styles from "../styles/Home.module.css";
 
@@ -132,6 +132,8 @@ export async function getStaticPaths({ locales, defaultLocale, ...props }) {
     `,
   });
 
+  console.log("data",data?.data?.posts?.edges?.length)
+
   const posts = data?.data.posts.edges.map(({ node }) => node);
 
   const paths = posts.map(({ slug }) => {
@@ -144,7 +146,7 @@ export async function getStaticPaths({ locales, defaultLocale, ...props }) {
 
 
   return {
-    paths: [],
-    fallback: "blocking",
+    paths: paths,
+    fallback: false,
   };
 }
